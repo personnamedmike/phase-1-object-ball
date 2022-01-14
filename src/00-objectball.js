@@ -155,26 +155,27 @@ function findPlayer(playersName) {
 
 findPlayer("Jason Terry");
 
-// function teamColors(teamName) {
-//   debugger;
-//   if (teamName === "Brooklyn Nets") {
-//     return gameObject().home.colors;
-//   } else if (teamName === "Charlotte Hornets") {
-//     return gameObject().away.colors;
-//   }
-// }
-
 function teamColors(teamName) {
   const object = gameObject();
-  if (object.home.teamName === teamName) return object.home.colors;
-  else return object.away.colors;
+  if (object.home.teamName === teamName) {
+    return object.home.colors;
+  } else {
+    return object.away.colors;
+  }
 }
 
 console.log("teamColors", teamColors("Charlotte Hornetts"));
 
-function teamNames() {
-  return [gameObject().home.teamName, gameObject().away.teamName];
-}
+const teamNames = () => {
+  const object = gameObject();
+  const teamNamesArray = [];
+  for (const team in object) {
+    teamNamesArray.push(object[team].teamName);
+  }
+  return teamNamesArray;
+};
+
+console.log("teamNamesArray", teamNames());
 
 function playerNumbers(teamName) {
   const numbersArray = [];
